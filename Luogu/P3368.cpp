@@ -29,25 +29,29 @@ int main() {
     cin.tie(nullptr), cout.tie(nullptr);
 
     cin >> n >> m;
-    for (int i = 1, x, lst = 0; i <= n; ++ i) {
+    for (int i = 1, last = 0; i <= n; ++ i) {
+        int x;
         cin >> x;
-        add(i, x - lst);
-        lst = x;
+
+        add(i, x - last);
+
+        last = x;
     }
 
-    while (m -- ) {
+    while (m --) {
         int op;
         cin >> op;
 
         if (op == 1) {
             int x, y, k;
             cin >> x >> y >> k;
-
+            
             add(x, k);
             add(y + 1, -k);
         } else {
             int x;
             cin >> x;
+
             cout << query(x) << endl;
         }
     }
